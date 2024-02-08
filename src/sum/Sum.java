@@ -1,20 +1,36 @@
 package sum;
 import java.util.Scanner;
-import java.lang.*;
 public class Sum {
-    public void mySum(){
-        Scanner scanner = new Scanner(System.in);
-        System.out.println("[ Sum Operator ]");
-        int x = 0;
-        int y = 0;
-        System.out.print("> Enter x: ");
-        x = scanner.nextInt();
-        System.out.print("> Enter y: ");
-        y = scanner.nextInt();
-        System.out.println(STR."Your result: \{x + y}");
+    private final Scanner scanner;
+    public Sum(){
+        scanner = new Scanner(System.in);
     }
-    public static void main(String[] args) {
-        Sum sum = new Sum();
-        sum.mySum();
+    public int mySum(int x, int y){
+        return x + y;
+    }
+    public void mySum(){
+        System.out.println(" [Sum Calculate] ");
+        System.out.print("> Enter x: ");
+        int x;
+        try{
+            x = scanner.nextInt();
+        }catch (Exception e){
+            System.out.println("Invalid input for x. Please enter an integer value.");
+            scanner.next();
+            mySum();
+            return;
+        }
+        System.out.print("> Enter y: ");
+        int y;
+        try{
+            y = scanner.nextInt();
+        }catch (Exception e){
+            System.out.println("Invalid input for y. Please enter an integer value.");
+            scanner.next();
+            mySum();
+            return;
+        }
+        int result = mySum(x,y);
+        System.out.println("> Result: "+ result);
     }
 }
